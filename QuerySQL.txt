@@ -1,0 +1,22 @@
+1. rata rata umur berdasarkan marital status
+select maritalstatus ,round(avg(age)) as rata_rata_umur
+from customer 
+group by maritalstatus 
+2. rata-rata umur customer jikadilihat dari gender
+select gender  ,round(avg(age))  as rata_rata_umur
+from customer 
+group by gender 
+3.  nama store dengan totalquantity terbanyak
+select s.storename, sum(t."Qty" ) as total_qty
+from store s 
+left join transaction as t 
+on s.storeid = t."StoreID" 
+group by 1 
+order by 2 desc 
+4. nama produk terlaris dengan total amount terbanyak
+select p.productname, sum(t."TotalAmount") as total_amount
+from product p 
+left join transaction as t 
+on p.productid = t."ProductID" 
+group by 1
+order by 2 desc 
